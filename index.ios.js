@@ -8,6 +8,7 @@ import React, {Component} from 'react';
 import {AppRegistry, StyleSheet, Text, View, Image} from 'react-native';
 import TabNavigator from 'react-native-tab-navigator';
 import TestPage from './TestPage';
+import Choiceness from './app/Choiceness';
 
 export default class eyepetizer extends Component {
     constructor(props) {
@@ -27,15 +28,16 @@ export default class eyepetizer extends Component {
                     renderSelectedIcon={() => <Image source={require('./images/feature_selected.png')} style={styles.tabIcon} />}
                     >
 
-                    <View style={{
-                        flex: 1,
-                        backgroundColor: '#fff',
-                        justifyContent: 'center'
-                    }}>
-                        <Text style={{
-                            fontSize: 20
-                        }}>我是第一个选项卡，直接书写出的视图!</Text>
-                    </View>
+                    {/*<View style={{*/}
+                        {/*flex: 1,*/}
+                        {/*backgroundColor: '#fff',*/}
+                        {/*justifyContent: 'center'*/}
+                    {/*}}>*/}
+                        {/*<Text style={{*/}
+                            {/*fontSize: 20*/}
+                        {/*}}>我是第一个选项卡，直接书写出的视图!</Text>*/}
+                    {/*</View>*/}
+                    <Choiceness/>
 
                 </TabNavigator.Item>
 

@@ -5,7 +5,7 @@
  */
 
 import React, {Component} from 'react';
-import {AppRegistry, StyleSheet, Text, View} from 'react-native';
+import {AppRegistry, StyleSheet, Text, View, Image} from 'react-native';
 import TabNavigator from 'react-native-tab-navigator';
 import TestPage from './TestPage';
 
@@ -13,13 +13,13 @@ export default class eyepetizer extends Component {
     constructor(props) {
         super(props);
         this.state = {
-            selectedTab: "精选"
+            selectedTab: "feature"
         };
     }
     render() {
         return (
             <TabNavigator tabBarStyle={styles.tab}>
-                <TabNavigator.Item selected={this.state.selectedTab === "精选"} title="精选" onPress={() => this.setState({selectedTab: "精选"})}>
+                <TabNavigator.Item selected={this.state.selectedTab === "feature"} title="精选" onPress={() => this.setState({selectedTab: "feature"})} renderIcon={() => <Image source={require('./images/feature.png')}/>}>
                     <View style={{
                         flex: 1,
                         backgroundColor: '#fff',
@@ -31,19 +31,19 @@ export default class eyepetizer extends Component {
                     </View>
                 </TabNavigator.Item>
 
-                <TabNavigator.Item selected={this.state.selectedTab === "发现"} title="发现" onPress={() => this.setState({selectedTab: "发现"})}>
+                <TabNavigator.Item selected={this.state.selectedTab === 'discovery'} title="发现" onPress={() => this.setState({selectedTab: 'discovery'})}>
 
                     <TestPage/>
 
                 </TabNavigator.Item>
 
-                <TabNavigator.Item selected={this.state.selectedTab === "关注"} title="关注" onPress={() => this.setState({selectedTab: "关注"})}>
+                <TabNavigator.Item selected={this.state.selectedTab === 'follow'} title="关注" onPress={() => this.setState({selectedTab: 'follow'})}>
 
                     <TestPage/>
 
                 </TabNavigator.Item>
 
-                <TabNavigator.Item selected={this.state.selectedTab === "我的"} title="我的" onPress={() => this.setState({selectedTab: "我的"})}>
+                <TabNavigator.Item selected={this.state.selectedTab === 'settings'} title="我的" onPress={() => this.setState({selectedTab: 'settings'})}>
 
                     <TestPage/>
 

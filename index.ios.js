@@ -19,7 +19,14 @@ export default class eyepetizer extends Component {
     render() {
         return (
             <TabNavigator tabBarStyle={styles.tab}>
-                <TabNavigator.Item selected={this.state.selectedTab === "feature"} title="精选" onPress={() => this.setState({selectedTab: "feature"})} renderIcon={() => <Image source={require('./images/feature.png')}/>}>
+                <TabNavigator.Item
+                    selected={this.state.selectedTab === "feature"}
+                    title="精选"
+                    onPress={() => this.setState({selectedTab: "feature"})}
+                    renderIcon={() => <Image source={require('./images/feature.png')} style={styles.tabIcon} />}
+                    renderSelectedIcon={() => <Image source={require('./images/feature_selected.png')} style={styles.tabIcon} />}
+                    >
+
                     <View style={{
                         flex: 1,
                         backgroundColor: '#fff',
@@ -29,21 +36,40 @@ export default class eyepetizer extends Component {
                             fontSize: 20
                         }}>我是第一个选项卡，直接书写出的视图!</Text>
                     </View>
+
                 </TabNavigator.Item>
 
-                <TabNavigator.Item selected={this.state.selectedTab === 'discovery'} title="发现" onPress={() => this.setState({selectedTab: 'discovery'})}>
+                <TabNavigator.Item
+                    selected={this.state.selectedTab === 'discovery'}
+                    title="发现"
+                    onPress={() => this.setState({selectedTab: 'discovery'})}
+                    renderIcon={() => <Image source={require('./images/discovery.png')} style={styles.tabIcon} />}
+                    renderSelectedIcon={() => <Image source={require('./images/discovery_selected.png')} style={styles.tabIcon} />}
+                    >
 
                     <TestPage/>
 
                 </TabNavigator.Item>
 
-                <TabNavigator.Item selected={this.state.selectedTab === 'follow'} title="关注" onPress={() => this.setState({selectedTab: 'follow'})}>
+                <TabNavigator.Item
+                    selected={this.state.selectedTab === 'follow'}
+                    title="关注"
+                    onPress={() => this.setState({selectedTab: 'follow'})}
+                    renderIcon={() => <Image source={require('./images/follow.png')} style={styles.tabIcon} />}
+                    renderSelectedIcon={() => <Image source={require('./images/follow_selected.png')} style={styles.tabIcon} />}
+                    >
 
                     <TestPage/>
 
                 </TabNavigator.Item>
 
-                <TabNavigator.Item selected={this.state.selectedTab === 'settings'} title="我的" onPress={() => this.setState({selectedTab: 'settings'})}>
+                <TabNavigator.Item
+                    selected={this.state.selectedTab === 'settings'}
+                    title="我的"
+                    onPress={() => this.setState({selectedTab: 'settings'})}
+                    renderIcon={() => <Image source={require('./images/settings.png')} style={styles.tabIcon} />}
+                    renderSelectedIcon={() => <Image source={require('./images/settings_selected.png')} style={styles.tabIcon} />}
+                    >
 
                     <TestPage/>
 
@@ -59,6 +85,10 @@ var styles = StyleSheet.create({
         backgroundColor: '#eee',
         alignItems: 'center',
         bottom: 0
+    },
+    tabIcon: {
+        height: 25,
+        width: 25
     },
     himiTextStyle: {
         backgroundColor: '#eee',

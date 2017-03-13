@@ -1,3 +1,4 @@
+// @flow
 'use strict';
 
 import React,{ Component } from 'react';
@@ -11,6 +12,9 @@ import {
     TouchableHighlight
     } from 'react-native';
 import Util from './Utils'
+import Swiper from 'react-native-swiper';
+import Choiceness from './Choiceness';
+import Discovery_Hot_Page from './Discovery_Hot_Page';
 
 class HeaderFace extends Component{
     constructor(props){
@@ -97,6 +101,13 @@ export default class extends Component {
                 <HeaderFace></HeaderFace>
                 <KindView/>
 
+                <Swiper style={styles.wrapper} showsButtons={false}>
+                    <Choiceness/>
+                    <Discovery_Hot_Page/>
+                    <View style={styles.slide3}>
+                        <Text style={styles.text}>作 者</Text>
+                    </View>
+                </Swiper>
             </View>
         )
     }
@@ -156,6 +167,37 @@ const styles =  StyleSheet.create({
         color: "#232323",
         textAlign: "center",
         fontWeight: "bold",
+    },
+
+    wrapper: {
+        paddingTop: 10,
+    },
+
+    slide1: {
+        flex: 1,
+        justifyContent: 'center',
+        alignItems: 'center',
+        backgroundColor: '#9DD6EB',
+    },
+
+    slide2: {
+        flex: 1,
+        justifyContent: 'center',
+        alignItems: 'center',
+        backgroundColor: '#97CAE5',
+    },
+
+    slide3: {
+        flex: 1,
+        justifyContent: 'center',
+        alignItems: 'center',
+        backgroundColor: '#92BBD9',
+    },
+
+    text: {
+        color: '#fff',
+        fontSize: 30,
+        fontWeight: 'bold',
     }
 });
 

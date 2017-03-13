@@ -11,6 +11,7 @@ import TestPage from './TestPage';
 import Choiceness from './app/Choiceness';
 import Discovery from './app/Discovery';
 
+
 export default class eyepetizer extends Component {
     constructor(props) {
         super(props);
@@ -49,7 +50,6 @@ export default class eyepetizer extends Component {
                     renderIcon={() => <Image source={require('./images/discovery.png')} style={styles.tabIcon} />}
                     renderSelectedIcon={() => <Image source={require('./images/discovery_selected.png')} style={styles.tabIcon} />}
                     >
-
                     <Discovery/>
 
                 </TabNavigator.Item>

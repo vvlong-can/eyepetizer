@@ -60,7 +60,7 @@ export default class Choiceness extends Component {
                 })
             })
             .catch((error) => {
-                console.error(error);
+                //console.error(error);
             });
     };
 

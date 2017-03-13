@@ -9,6 +9,7 @@ import {AppRegistry, StyleSheet, Text, View, Image} from 'react-native';
 import TabNavigator from 'react-native-tab-navigator';
 import TestPage from './TestPage';
 import Choiceness from './app/Choiceness';
+import Discovery from './app/Discovery';
 
 export default class eyepetizer extends Component {
     constructor(props) {
@@ -49,7 +50,7 @@ export default class eyepetizer extends Component {
                     renderSelectedIcon={() => <Image source={require('./images/discovery_selected.png')} style={styles.tabIcon} />}
                     >
 
-                    <TestPage/>
+                    <Discovery/>
 
                 </TabNavigator.Item>
 

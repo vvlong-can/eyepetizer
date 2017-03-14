@@ -15,6 +15,7 @@ import Util from './Utils'
 import Swiper from 'react-native-swiper';
 import Choiceness from './Choiceness';
 import Discovery_Hot_Page from './Discovery_Hot_Page';
+import ScrollableTabView from 'react-native-scrollable-tab-view';
 
 class HeaderFace extends Component{
     constructor(props){
@@ -99,18 +100,41 @@ export default class extends Component {
         return(
             <View>
                 <HeaderFace></HeaderFace>
-                <KindView/>
+                <View style={{height:screenHeight+40,top:20}}>
+                    <ScrollableTabView
+                        style={styles.scrollableTabView}
+                        tabBarActiveTextColor="black"
+                        tabBarInactiveTextColor="grey"
+                        tabBarTextStyle={styles.text2}
+                        tabBarUnderlineStyle={{backgroundColor:"black"}}                       
+                        >
+                        <Discovery_Hot_Page tabLabel="热 门"></Discovery_Hot_Page>
+                        <View tabLabel="分 类" style={styles.slide3}>
+                            <Text style={styles.text}>分 类</Text>
+                        </View>
+                        <View tabLabel="作 者" style={styles.slide3}>
+                            <Text style={styles.text}>作 者</Text>
+                        </View>
+                    </ScrollableTabView>
+                </View>
 
-                <Swiper style={styles.wrapper} showsButtons={false}>
-                    <Discovery_Hot_Page/>
-                    <View style={styles.slide3}>
-                        <Text style={styles.text}>分 类</Text>
-                    </View>
-                    <View style={styles.slide3}>
-                        <Text style={styles.text}>作 者</Text>
-                    </View>
-                </Swiper>
             </View>
+
+
+            // <View>
+            //     <HeaderFace></HeaderFace>
+            //     <KindView/>
+            //
+            //     <Swiper style={styles.wrapper} showsButtons={false}>
+            //         <Discovery_Hot_Page/>
+                    // <View style={styles.slide3}>
+                    //     <Text style={styles.text}>分 类</Text>
+                    // </View>
+                    // <View style={styles.slide3}>
+                    //     <Text style={styles.text}>作 者</Text>
+                    // </View>
+            //     </Swiper>
+            // </View>
         )
     }
 }
@@ -200,7 +224,20 @@ const styles =  StyleSheet.create({
         color: '#fff',
         fontSize: 30,
         fontWeight: 'bold',
-    }
+    },
+
+    text2: {
+        fontWeight: 'bold',
+        fontSize: 11,
+    },
+
+    scrollableTabView: {
+        // top : 50,
+
+    },
+
+
+
 });
 
 const screenWidth = Dimensions.get('window').width;

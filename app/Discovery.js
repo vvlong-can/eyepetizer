@@ -98,15 +98,14 @@ class KindView extends Component{
 export default class extends Component {
     render() {
         return(
-            <View>
+            <View style={styles.container}>
                 <HeaderFace></HeaderFace>
                 <View style={{height:screenHeight+40,top:20}}>
                     <ScrollableTabView
-                        style={styles.scrollableTabView}
                         tabBarActiveTextColor="black"
                         tabBarInactiveTextColor="grey"
                         tabBarTextStyle={styles.text2}
-                        tabBarUnderlineStyle={{backgroundColor:"black"}}                       
+                        tabBarUnderlineStyle={{backgroundColor:"black"}}
                         >
                         <Discovery_Hot_Page tabLabel="热 门"></Discovery_Hot_Page>
                         <View tabLabel="分 类" style={styles.slide3}>
@@ -140,8 +139,8 @@ export default class extends Component {
 }
 
 const styles =  StyleSheet.create({
-    flex1: {
-        flex:1,
+    container: {
+        flexDirection:"column",
     },
 
     headerFaceView: {
@@ -150,6 +149,7 @@ const styles =  StyleSheet.create({
         backgroundColor: "#f7f7f7",
         top: 20,
         flexDirection: "row",
+        justifyContent: "space-between",
         alignItems: "center",
     },
 
@@ -230,14 +230,6 @@ const styles =  StyleSheet.create({
         fontWeight: 'bold',
         fontSize: 11,
     },
-
-    scrollableTabView: {
-        // top : 50,
-
-    },
-
-
-
 });
 
 const screenWidth = Dimensions.get('window').width;

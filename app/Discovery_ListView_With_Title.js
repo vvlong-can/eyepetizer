@@ -28,7 +28,8 @@ export default class extends Component {
             <View>
 
                 <Image source={{uri: rowData.url}} style={styles.swiperImage}>
-                    <View style={{flex:3}}/>
+                    <View style={{flex:5}}>
+                    </View>
                     <Text style={styles.imageTitleText}>
                         {rowData.title}
                     </Text>
@@ -38,9 +39,10 @@ export default class extends Component {
                     <Text style={styles.imageTagText}>
                         {rowData.name}
                     </Text>
+                    <View style={{flex:3}}>
+                    </View>
                 </Image>
             </View>
-
         )
     }
 
@@ -78,8 +80,8 @@ var styles = StyleSheet.create({
         fontWeight : 'bold',
         fontSize: 18,
         color : "white",
-        flex : 1,
-        alignSelf: "center",
+        flex : 2,
+        backgroundColor: 'rgba(0,0,0,0)',
     },
 
     imageSubTitleText : {
@@ -87,13 +89,15 @@ var styles = StyleSheet.create({
         fontSize: 12,
         color : "white",
         flex : 1,
+        backgroundColor: 'rgba(0,0,0,0)',
     },
 
     imageTagText : {
         textAlign : "center",
         fontSize: 11,
         color : "white",
-        flex : 3,
+        flex : 1,
+        backgroundColor: 'rgba(0,0,0,0)',
     },
 
     listview: {
@@ -102,8 +106,8 @@ var styles = StyleSheet.create({
 
     swiperImage: {
         height: 220,
-        alignItems : "center",
         flexDirection: "column",
+        alignItems: 'center',
     },
 });
 

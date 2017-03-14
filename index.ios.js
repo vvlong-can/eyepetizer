@@ -39,7 +39,7 @@ export default class eyepetizer extends Component {
                             {/*fontSize: 20*/}
                         {/*}}>我是第一个选项卡，直接书写出的视图!</Text>*/}
                     {/*</View>*/}
-                    <Choiceness/>
+                    <TestPage/>
 
                 </TabNavigator.Item>
 

@@ -19,7 +19,6 @@ export default class extends Component {
                     <Discovery_Swiper
                     />
                 </View>
-
             </View>
         )
     }

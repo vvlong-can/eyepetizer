@@ -102,8 +102,10 @@ export default class extends Component {
                 <KindView/>
 
                 <Swiper style={styles.wrapper} showsButtons={false}>
-                    <Choiceness/>
                     <Discovery_Hot_Page/>
+                    <View style={styles.slide3}>
+                        <Text style={styles.text}>分 类</Text>
+                    </View>
                     <View style={styles.slide3}>
                         <Text style={styles.text}>作 者</Text>
                     </View>

@@ -77,7 +77,7 @@ var styles = StyleSheet.create({
 
     imageTitleText : {
         textAlign : "center",
-        fontWeight : 'bold',
+        fontWeight : '900',
         fontSize: 18,
         color : "white",
         flex : 2,

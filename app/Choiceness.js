@@ -10,16 +10,19 @@ import {
     TouchableOpacity,
     StyleSheet,
     Image,
+    ScrollView,
+    TouchableHighlight,
     Dimensions } from 'react-native';
 
 import VideoListItem from "./VideoListItem";
+import VideoDetail from "./VideoDetail";
+import ScrollableTabView from 'react-native-scrollable-tab-view';
 
 
 export default class Choiceness extends Component {
 
     constructor(props) {
         super(props);  // 纯数组rowHasChanged(prevRowData, nextRowData)
-        // var ds = new ListView.DataSource({rowHasChanged: (r1, r2) => r1 !== r2});
         // var ds = new ListView.DataSource(getSectionHeaderData(dataBlob, sectionID));
         var ds = new ListView.DataSource({rowHasChanged: (r1, r2) => r1 !== r2});
         this.state = {
@@ -56,11 +59,10 @@ export default class Choiceness extends Component {
                 this.setState({
                     title: responseJson.dailyList[0].videoList[0].title,
                     dataSource: this.state.dataSource.cloneWithRows(videoList),
-                    // picUrls: this.state.picUrls.cloneWithRows(videoPic),
                 })
             })
             .catch((error) => {
-                //console.error(error);
+                console.error(error);
             });
     };
 
@@ -70,6 +72,11 @@ export default class Choiceness extends Component {
     //
     // }
 
+    // past() {
+    //     alert('past!');
+    // }
+
+
     _genRows(flag){
         const dataBlob = [];
         alert(flag);
@@ -78,29 +85,79 @@ export default class Choiceness extends Component {
     }
 
 
+
+
     //渲染列表项
     _renderRow(rowData, rowId) {
         return <VideoListItem
-            _pressRow={()=>this._pressRow(rowData, rowId)}
-            imgUrl={rowData.coverForFeed}
-            title={rowData.title}
+            rowData = {rowData}
+            rowID = {rowId}
+            _pressRow = {()=>this._pressRow(rowData, rowId)}
+            goToDetail={ this._goToDetail.bind(this)}
+            imgUrl = {rowData.coverForFeed}
+            title = {rowData.title}
             subTitle = {rowData.category}/>
     }
 
-    _pressRow(rowData,rowID) {
-        // alert('666');
+    _pressRow() {
+        alert('666');
 
+    }
+
+    _goToDetail(rowData) {
+        const { navigator } = this.props;
+        const imageUrl = `https:${rowData.imagePath}`;
+        // console.log("去商品详情页",rowData);
+        // Storage.mergeArrayWithKeyValue('lastestRecord',{name: rowData.companyName,id: rowData.companyId, imagePath: rowData.imagePath, productName: rowData.productName});
+
+        if(navigator) {
+            navigator.push({
+                component: VideoDetail,
+                params: {
+                    rowTitle: this.state.title,
+                    subTitle: rowData.category,
+                    videoUrl: rowData.playUrl,
+                    videoCover: rowData.coverForFeed,
+                    authorDic: rowData.author,
+                    consumptionDic: rowData.consumption,
+                    descriptionEditor:rowData.descriptionEditor
+                }
+            })
+        }
     }
 
     render() {
         if(this.state.title) {
             return (
-                <View>
+                <ScrollView>
+                    {/*<View>*/}
+                        <Image resource={{uri:"http://img.kaiyanapp.com/9fb34512de6d12a6b22d821079d06ff3.jpeg"}}/>
+                    {/*</View>*/}
                     <ListView
                         dataSource={this.state.dataSource}
                         renderRow={(rowData, sectionId, rowId)=>this._renderRow(rowData, rowId)}
                     />
-                </View>
+                    <TouchableOpacity onPress={() => {
+                        alert('555');
+                        console.log('Press Basic Button!');
+                    }}>
+                        <Text>点我获取数据</Text>
+                        <Text style={{
+                            paddingTop: screenHeight/2,
+                            textAlign: 'center',
+                            fontSize:25,}}>查看往期编辑精选
+                            <View style={{width: 50, height: 50, backgroundColor: 'steelblue'}} />
+                        </Text>
+                    </TouchableOpacity>
+                    {/*<Button*/}
+                        {/*onPress={this.past()}*/}
+                        {/*title="查看往期编辑精选"*/}
+                        {/*color="gray"*/}
+                        {/*fontSize="12"*/}
+                    {/*/>*/}
+                </ScrollView>
+
+
             );
         } else {
             return (
@@ -121,3 +178,13 @@ export default class Choiceness extends Component {
 }
 const screenWidth = Dimensions.get('window').width;
 const screenHeight = Dimensions.get('window').height;
+
+var styles =  StyleSheet.create({
+    checkOld:{
+        width: screenWidth,
+        height: 40,
+        color: 'gray',
+        justifyContent: 'center',
+        alignItems: 'center',
+    }
+});

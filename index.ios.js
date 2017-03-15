@@ -5,12 +5,11 @@
  */
 
 import React, {Component} from 'react';
-import {AppRegistry, StyleSheet, Text, View, Image} from 'react-native';
+import {AppRegistry, StyleSheet, Text, View, Image,Navigator} from 'react-native';
 import TabNavigator from 'react-native-tab-navigator';
 import TestPage from './TestPage';
 import Choiceness from './app/Choiceness';
 import Discovery from './app/Discovery';
-
 
 export default class eyepetizer extends Component {
     constructor(props) {
@@ -20,6 +19,8 @@ export default class eyepetizer extends Component {
         };
     }
     render() {
+        let defaultName = 'Choiceness';
+        let defaultComponent = Choiceness;
         return (
             <TabNavigator tabBarStyle={styles.tab}>
                 <TabNavigator.Item
@@ -30,16 +31,16 @@ export default class eyepetizer extends Component {
                     renderSelectedIcon={() => <Image source={require('./images/feature_selected.png')} style={styles.tabIcon} />}
                     >
 
-                    {/*<View style={{*/}
-                        {/*flex: 1,*/}
-                        {/*backgroundColor: '#fff',*/}
-                        {/*justifyContent: 'center'*/}
-                    {/*}}>*/}
-                        {/*<Text style={{*/}
-                            {/*fontSize: 20*/}
-                        {/*}}>我是第一个选项卡，直接书写出的视图!</Text>*/}
-                    {/*</View>*/}
-                    <TestPage/>
+                    <Navigator
+                    initialRoute={{ name: defaultName, component: defaultComponent }}
+                    configureScene={(route) => {
+                        return Navigator.SceneConfigs.VerticalDownSwipeJump;
+                    }}
+                    renderScene={(route, navigator) => {
+                        let Component = route.component;
+                        return <Component {...route.params} navigator={navigator} />
+                    }} />
+                    {/*<Choiceness/>*/}
 
                 </TabNavigator.Item>
 

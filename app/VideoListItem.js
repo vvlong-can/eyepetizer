@@ -18,9 +18,15 @@ export default class VideoListItem extends Component {
     }
 
 
+    _pressRow(rowData,rowID) {
+        alert('666');
+
+    }
+
     render() {
+        const {rowData, rowID, goToDetail} = this.props;
         return (
-            <TouchableOpacity activeOpacity={0.9} onPress={this.props._pressRow()}>
+            <TouchableOpacity activeOpacity={0.9} onPress={()=> goToDetail(rowData) } >
                 <Image
                     style={VideoListItemStyle.backgroundImage} source={{uri: this.props.imgUrl}}>
                     <Text style={VideoListItemStyle.title}>{this.props.title}</Text>

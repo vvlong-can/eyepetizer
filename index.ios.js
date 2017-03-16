@@ -5,13 +5,12 @@
  */
 
 import React, {Component} from 'react';
-import {AppRegistry, StyleSheet, Text, View, Image, Dimensions} from 'react-native';
+import {AppRegistry, StyleSheet, Text, View, Image, Dimensions，Navigator} from 'react-native';
 import TabNavigator from 'react-native-tab-navigator';
 import TestPage from './TestPage';
 import Choiceness from './app/Choiceness';
 import Discovery from './app/Discovery';
 import LaunchAnimatedImage from './app/LaunchAnimatedImage';
-
 
 export default class eyepetizer extends Component {
     constructor(props) {
@@ -21,7 +20,10 @@ export default class eyepetizer extends Component {
         };
     }
     render() {
+        let defaultName = 'Choiceness';
+        let defaultComponent = Choiceness;
         return (
+<<<<<<< HEAD
             <View style={styles.container}>
 
                 <TabNavigator tabBarStyle={styles.tab}>
@@ -84,6 +86,65 @@ export default class eyepetizer extends Component {
 
                 <LaunchAnimatedImage/>
             </View>
+=======
+            <TabNavigator tabBarStyle={styles.tab}>
+                <TabNavigator.Item
+                    selected={this.state.selectedTab === "feature"}
+                    title="精选"
+                    onPress={() => this.setState({selectedTab: "feature"})}
+                    renderIcon={() => <Image source={require('./images/feature.png')} style={styles.tabIcon} />}
+                    renderSelectedIcon={() => <Image source={require('./images/feature_selected.png')} style={styles.tabIcon} />}
+                    >
+
+                    <Navigator
+                    initialRoute={{ name: defaultName, component: defaultComponent }}
+                    configureScene={(route) => {
+                        return Navigator.SceneConfigs.VerticalDownSwipeJump;
+                    }}
+                    renderScene={(route, navigator) => {
+                        let Component = route.component;
+                        return <Component {...route.params} navigator={navigator} />
+                    }} />
+                    {/*<Choiceness/>*/}
+
+                </TabNavigator.Item>
+
+                <TabNavigator.Item
+                    selected={this.state.selectedTab === 'discovery'}
+                    title="发现"
+                    onPress={() => this.setState({selectedTab: 'discovery'})}
+                    renderIcon={() => <Image source={require('./images/discovery.png')} style={styles.tabIcon} />}
+                    renderSelectedIcon={() => <Image source={require('./images/discovery_selected.png')} style={styles.tabIcon} />}
+                    >
+                    <Discovery/>
+
+                </TabNavigator.Item>
+
+                <TabNavigator.Item
+                    selected={this.state.selectedTab === 'follow'}
+                    title="关注"
+                    onPress={() => this.setState({selectedTab: 'follow'})}
+                    renderIcon={() => <Image source={require('./images/follow.png')} style={styles.tabIcon} />}
+                    renderSelectedIcon={() => <Image source={require('./images/follow_selected.png')} style={styles.tabIcon} />}
+                    >
+
+                    <TestPage/>
+
+                </TabNavigator.Item>
+
+                <TabNavigator.Item
+                    selected={this.state.selectedTab === 'settings'}
+                    title="我的"
+                    onPress={() => this.setState({selectedTab: 'settings'})}
+                    renderIcon={() => <Image source={require('./images/settings.png')} style={styles.tabIcon} />}
+                    renderSelectedIcon={() => <Image source={require('./images/settings_selected.png')} style={styles.tabIcon} />}
+                    >
+
+                    <TestPage/>
+
+                </TabNavigator.Item>
+            </TabNavigator>
+>>>>>>> b3daaf9e30dabcc675b0748320455f218ddf84b7
         );
     }
 }
